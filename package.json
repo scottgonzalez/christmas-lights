@@ -1,0 +1,46 @@
+{
+  "name": "christmas-lights",
+  "version": "0.0.0",
+  "description": "Customized Christmas Light Display",
+  "author": {
+    "name": "Scott González",
+    "email": "scott.gonzalez@gmail.com",
+    "url": "http://scottgonzalez.com"
+  },
+  "bugs": {
+    "url": "https://github.com/scottgonzalez/christmas-lights/issues"
+  },
+  "homepage": "https://github.com/scottgonzalez/christmas-lights",
+  "keywords": [
+    "johnny-five",
+    "christmas",
+    "light",
+    "display",
+    "animation"
+  ],
+  "license": "MIT",
+  "main": "lib/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottgonzalez/christmas-lights.git"
+  },
+  "scripts": {
+    "build": "npm run tessel-config",
+    "build-production": "npm run build && npm run set-env tessel-production",
+    "deploy": "npm run test && npm run build-production && t2 push --lan lib/main.js",
+    "lint": "standard lib/**/*.js",
+    "set-env": "scripts/set-env.js",
+    "tessel": "npm run lint && npm run build && t2 run --lan lib/main.js",
+    "tessel-config": "scripts/tessel-config.js",
+    "test": "npm run lint"
+  },
+  "devDependencies": {
+    "standard": "^8.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "johnny-five": "^0.10.6",
+    "light-display": "^1.0.0",
+    "tessel-io": "^0.10.1"
+  }
+}
